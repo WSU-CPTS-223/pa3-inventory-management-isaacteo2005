@@ -7,3 +7,7 @@ We expect a fully functioninig command line REPL application for an inventory qu
 `make` will compile and execute the skeleton code
 
 Feel free to modify Makefile as you see fit.
+
+These are the categories I decided to emit: Brand Name, Asin, Upcan Ean Code, List Price, Quantity, Sku, Stock, Product Details, Dimensions, Color, Ingredients, Directions to Use, Size Quantity Variant, Product description.
+
+Most if not all of the cells in these categories were empty.

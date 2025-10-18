@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-
+#include "HashMap.h"
 using namespace std;
 
 void printHelp()
