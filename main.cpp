@@ -170,10 +170,10 @@ string cleanString(string s) {
     //Trims leading/trailing whitespaces
     auto notSpace = [](unsigned char ch) { return !std::isspace(ch); };
 
-    //trim front of string
-    s.erase(s.begin(), std::find_if(s.begin(), s.end(), notSpace));
-    //trim backs of string
-    s.erase(std::find_if(s.rbegin(), s.rend(), notSpace).base(), s.end());
+    //trim front of string of any whitespace
+    s.erase(s.begin(), find_if(s.begin(), s.end(), notSpace));
+    //trim backs of string of any whitespace
+    s.erase(find_if(s.rbegin(), s.rend(), notSpace).base(), s.end());
 
     return s;
 }
@@ -184,7 +184,7 @@ string getCSVField(stringstream& ss) {
 
     while (ss.get(c)) {
         if (c == '"') {
-            inQuotes = !inQuotes; //toggles inQuotes when the end of the field has been reached
+            inQuotes = !inQuotes; //toggles inQuotes when right before end of the field has been reached
         } 
         else if (c == ',' && !inQuotes) { //checks if the end of the field has been reached and break
             break;
@@ -209,6 +209,7 @@ void loadProducts(ifstream& infile, HashMap<string, Product>& map_id, HashMap<st
         string variants, product_url, is_amazon = "";
         vector<string> fields;
         stringstream ss(line);
+        //pushes all the fields to one vector while making sure to get the full field
         while (ss.peek() != EOF) {
             fields.push_back(getCSVField(ss)); 
         }
@@ -222,6 +223,7 @@ void loadProducts(ifstream& infile, HashMap<string, Product>& map_id, HashMap<st
             category_token = cleanString(category_token);
             category.push_back(category_token);
         }
+        //getting the rest of the fields, indexes skipped are fields skipped in READ ME file
         sell_price = fields[7];
         model_num = fields[9];
         about_product = fields[10];
