@@ -9,6 +9,7 @@ using namespace std;
 
 void test_insert(){
     //normal case
+    cout << "Testing Insert:" << endl;
     HashMap<string, int> map;
     map.insert("Games", 10);
     map.insert("Books", 20);
@@ -24,9 +25,11 @@ void test_insert(){
     list<int> values1;
     map.get("Games", values1);
     assert(values1.size() == 3);
+    cout << "all insert cases passed" << endl;
 }
 void test_get(){
     //normal case
+    cout << "Testing get function" << endl;
     HashMap<string, int> map;
     map.insert("Games", 10);
     map.insert("Games", 20);
@@ -39,10 +42,12 @@ void test_get(){
     bool gotNone = map.get("Unknown", games);
     assert(!gotNone);
     assert(games.size() == 2);
+    cout << "All get cases passed" << endl;
 
 }
 void test_remove(){
     //normal case
+    cout <<"Testing remove function" << endl;
     HashMap<string, int> map;
     map.insert("Games", 10);
     map.insert("Books", 20);
@@ -63,10 +68,12 @@ void test_remove(){
     list<int> checkBooks;
     bool existBooks = map.get("Books", checkBooks);
     assert(checkBooks.empty() && !existBooks);
+    cout << "All remove cases passed" << endl;
 }
 void test_rehash(){
     //hash happens automatically after an insert
     //normal case
+    cout << "Testing rehash function" << endl;
     HashMap<string, int> map(3);
     for (int i = 0; i < 100; ++i) {
         map.insert(to_string(i), i);
@@ -80,6 +87,15 @@ void test_rehash(){
     HashMap<string, int> map2(3);
     map2.rehash();
     assert(true);
+    cout << "All rehash cases passed" << endl;
+}
+void test_all(){
+    cout << "Testing all cases" << endl;
+    test_insert();
+    test_get();
+    test_remove();
+    test_rehash();
+    cout << "All cases passed" << endl;
 }
 void printHelp()
 {
@@ -280,10 +296,7 @@ void bootStrap()
 }
 int main(int argc, char const *argv[])
 {
-    test_insert();
-    test_get();
-    test_remove();
-    test_rehash();
+    test_all();
     bootStrap();
     return 0;
 }
