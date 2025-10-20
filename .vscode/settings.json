@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "xstring": "cpp",
+        "list": "cpp",
+        "vector": "cpp",
+        "initializer_list": "cpp",
+        "utility": "cpp",
+        "xutility": "cpp",
+        "type_traits": "cpp",
+        "tuple": "cpp",
+        "xmemory": "cpp"
+    }
+}
