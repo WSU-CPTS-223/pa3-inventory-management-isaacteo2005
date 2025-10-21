@@ -112,7 +112,7 @@ bool validCommand(string line)
            (line.rfind("find", 0) == 0) ||
            (line.rfind("listInventory") == 0);
 }
-void find(string id, HashMap<string, Product> map_id){
+void find(string id, HashMap<string, Product>& map_id){
     list<Product> products;
     bool found = map_id.get(id, products);
     if(found){
@@ -124,7 +124,7 @@ void find(string id, HashMap<string, Product> map_id){
     }
 
 }
-void listInventory(string category, HashMap<string, Product> map_category){
+void listInventory(string category, HashMap<string, Product>& map_category){
     list<Product> products;
     bool found = map_category.get(category, products);
     if(found){
